@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet"  href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src = "@{/js/jquery.js}"> </script>
+</head>
+<body>
+<form role="form">
+    <div class="form-group">
+        <label for="id">id</label>
+        <input id = "id" type="text" class="form-control" placeholder="输入id">
+        <label for="department">部门名</label>
+        <input id = "department" type="text" class="form-control" placeholder="输入部门名">
+        <label for="name">用户名</label>
+        <input id = "name" type="text" class="form-control" placeholder="输入用户名">
+        <label for="object">数据ID</label>
+        <input id = "object" type="text" class="form-control" placeholder="输入数据id">
+        <label for="type">操作类型</label>
+        <input id = "type" type="text" class="form-control" placeholder="输入操作类型">
+        <label for="opinionTime">意见时间</label>
+        <input id = "opinionTime" type="text" class="form-control" placeholder="输入意见时间">
+        <label for="doneTime">完成时间</label>
+        <input id = "doneTime" type="text" class="form-control" placeholder="输入完成时间">
+        <label for="extension1">扩展字段1</label>
+        <input id = "extension1" type="text" class="form-control" placeholder="输入扩展字段1">
+        <label for="extension2">扩展字段2</label>
+        <input id = "extension2" type="text" class="form-control" placeholder="输入扩展字段2">
+        <label for="extension3">扩展字段3</label>
+        <input id = "extension3" type="text" class="form-control" placeholder="输入扩展字段3">
+        <button id="submit">提交</button>
+    </div>
+</form>
+
+<script>
+    $("#submit").click(function(){
+        const id = $("#id").val();
+        const department = $("#department").val();
+        const name = $("#name").val();
+        const object = $("#object").val();
+        const type = $("#type").val();
+        const opinionTime = $("#opinionTime").val();
+        const doneTime = $("#doneTime").val();
+        const extension1 = $("#extension1").val();
+        const extension2 = $("#extension2").val();
+        const extension3 = $("#extension3").val();
+        $.post("createOpinionRecord",{id:id,department:department,name:name,object:object,
+            type:type,opinionTime:opinionTime,doneTime:doneTime,
+            extension1:extension1,extension2:extension2,extension3:extension3},function (result){
+            $("#submit").append(result.updateStatus);
+        });
+    });
+</script>
+</body>
+</html>

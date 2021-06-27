@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试页面</title>
+    <script th:src = "@{/js/jquery.js}"> </script>
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
+    <link rel = "stylesheet" th:href = "@{/css/tool.css}">
+</head>
+<body>
+<div class="wrap">
+    <div class="header">
+        <div class="logo">
+            测试页面
+        </div>
+    </div>
+    <div class="main">
+        <div class="nav-box">
+            <div class="nav">
+                <div class="nav-header">
+                    <div class="title">
+                        <div class="title">提交记录</div>
+                    </div>
+                </div>
+                <ul>
+                    <li onclick="openPage('opinion')">提交意见记录</li>
+                    <li onclick="openPage('review')">提交审批记录</li>
+                    <li onclick="openPage('modify')">修改意见记录</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content-box f1" id="content">
+
+        </div>
+    </div>
+</div>
+</body>
+
+<script>
+    $(".nav-header").bind('click', function () {
+        if ($(this).next().is(':hidden')) {
+            $(this).children(".dropIcon2").css("background", "url(./img/top-white.png) center no-repeat")
+            $(this).next().fadeIn()
+        } else {
+            $(this).children(".dropIcon2").css("background", "url(./img/down-white.png) center no-repeat")
+            $(this).next().fadeOut()
+        }
+    })
+
+    const openPage = function (url) {
+        $("#content").load(url);
+    };
+</script>
+
+</html>

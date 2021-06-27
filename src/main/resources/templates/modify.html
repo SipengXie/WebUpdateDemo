@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet"  href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script th:src = "@{/js/jquery.js}"> </script>
+</head>
+<body>
+<form role="form">
+    <div class="form-group">
+        <label for="id">id</label>
+        <input id = "id" type="text" class="form-control" placeholder="输入id">
+        <label for="doneTime">完成时间</label>
+        <input id = "doneTime" type="text" class="form-control" placeholder="输入完成时间">
+        <button id="submit">提交</button>
+    </div>
+</form>
+
+<script>
+    $("#submit").click(function(){
+        const id = $("#id").val();
+        const doneTime = $("#doneTime").val();
+        $.post("modifyOpinionRecord",{id:id,doneTime:doneTime},function (result){
+            $("#submit").append(result.updateStatus);
+        });
+    });
+</script>
+</body>
+</html>
